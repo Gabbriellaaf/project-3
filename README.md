@@ -1,4 +1,4 @@
-# sass-base-school
+# Project 3
 
 
 ## Clone to update base system
