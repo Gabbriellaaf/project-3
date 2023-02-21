@@ -4,7 +4,7 @@
   --gap-xl: 4rem;
   --gap-l: 3rem;
   --gap-m: 2rem;
-  --gap-2: 1 rem;
+  --gap-s: 1rem;
   --border-radius: 0px;
   --color-dark: #222;
   --color-dark-200: #444;
@@ -104,9 +104,18 @@ li {
 }
 
 .menu {
-  width: 640px;
-  height: 45px;
   background-color: pink;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap-l);
+}
+.menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-l);
 }
 
 .hero {
@@ -137,7 +146,6 @@ li {
   max-width: 50rem;
   width: 100%;
   background-color: yellow;
-  min-height: 400px;
 }
 .hero__prev-link {
   display: block;
@@ -147,22 +155,29 @@ li {
   background-color: yellow;
 }
 .hero__pagination {
-  display: block;
-  min-height: 40px;
-  max-width: 250px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
   background-color: yellow;
 }
 .hero__social {
-  min-height: 40px;
-  max-width: 250px;
-  width: 100%;
   background-color: red;
   position: absolute;
   right: var(--gap-m);
   top: 40%;
   transform: rotate(-90deg) translateX(50%);
   transform-origin: bottom right;
+}
+.hero .counter__total::before {
+  content: "/";
+}
+
+.social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
