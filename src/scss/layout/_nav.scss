@@ -37,6 +37,10 @@
 
     &__button {
         @include button.default;
+        width: 34px;
+        height: 34px;
+        position: relative;
+        background-color: red; //temp
     }
 
     &__item {
@@ -44,5 +48,36 @@
         &--current {
             font-weight: 600;
         }
+    }
+}
+
+.hamburger {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-light);
+
+    &:before, &:after {
+        content: '';
+        display: block;
+        background-color: inherit;
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        top: -8px;
+    }
+
+    &::after {
+        top: 8px;
+        width: 70%;
+        right: 0;
+    }
+
+    // Focus is temp until we include Javascript
+    &--close,
+    &:focus {
+        
     }
 }
