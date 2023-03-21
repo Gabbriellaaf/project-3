@@ -114,6 +114,11 @@ li {
   padding: 0 var(--gap-xl);
   z-index: 999;
 }
+@media screen and (max-width: 40rem) {
+  .site-header {
+    padding: 0 var(--gap-l);
+  }
+}
 .site-header__inner {
   display: flex;
   justify-content: space-between;
@@ -142,6 +147,11 @@ li {
   right: 100%;
   top: 50%;
 }
+@media screen and (max-width: 62.5rem) {
+  .menu:before {
+    display: none;
+  }
+}
 .menu__list {
   list-style: none;
   margin: 0;
@@ -150,9 +160,18 @@ li {
   align-items: center;
   gap: var(--gap-l);
 }
+@media screen and (max-width: 55rem) {
+  .menu__list {
+    display: none;
+  }
+}
 .menu__link {
   color: var(--color-light);
   font-size: var(--font-size-2);
+  transition: all 0.2s;
+}
+.menu__link:hover {
+  color: var(--color-light-200);
 }
 .menu__button {
   background-color: transparent;
@@ -166,6 +185,9 @@ li {
   display: flex;
   align-items: center;
   gap: var(--gap-s);
+  width: 34px;
+  height: 34px;
+  position: relative;
 }
 .menu__button svg {
   opacity: 1;
@@ -174,8 +196,53 @@ li {
   background-color: transparant;
   color: var(--color-light);
 }
+.menu__button--close .hamburger, .menu__button:focus .hamburger {
+  height: 0;
+}
+.menu__button--close .hamburger::before, .menu__button--close .hamburger::after, .menu__button:focus .hamburger::before, .menu__button:focus .hamburger::after {
+  top: 0;
+  transition: top 0.2s, transform 0.2s 0.2s, width 0s 0.2s;
+}
+.menu__button--close .hamburger::before, .menu__button:focus .hamburger::before {
+  transform: rotate(-45deg);
+}
+.menu__button--close .hamburger::after, .menu__button:focus .hamburger::after {
+  width: 100%;
+  transform: rotate(45deg);
+}
+.menu__button--close .hamburger, .menu__button:focus .hamburger {
+  height: 0;
+}
+.menu__button--close .hamburger::before, .menu__button--close .hamburger::after, .menu__button:focus .hamburger::before, .menu__button:focus .hamburger::after {
+  top: 0;
+}
 .menu__item--current {
   font-weight: 600;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-light);
+  transition: height 0s 0.2s;
+}
+.hamburger:before, .hamburger:after {
+  content: "";
+  display: block;
+  background-color: inherit;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: -8px;
+  transition: top 0.2s 2s, transform 0.2s 0.2s;
+}
+.hamburger::after {
+  top: 8px;
+  width: 70%;
+  right: 0;
 }
 
 .hero {
@@ -184,6 +251,11 @@ li {
   display: grid;
   padding: 32px;
   color: var(--color-light);
+}
+@media screen and (max-width: 62.5rem) {
+  .hero {
+    padding: 16px;
+  }
 }
 .hero__inner {
   display: grid;
@@ -204,6 +276,11 @@ li {
   grid-area: hero-main;
   padding: var(--gap-m) var(--gap-xl);
   position: relative;
+}
+@media screen and (max-width: 30rem) {
+  .hero__main {
+    padding: var(--gap-m) var(--gap-m);
+  }
 }
 .hero__footer {
   grid-area: hero-footer;
@@ -231,6 +308,7 @@ li {
   opacity: 0.54;
   font-family: var(--font-serif);
   font-size: var(--font-size-1);
+  transition: all 0.2s;
 }
 .hero__prev-link svg {
   opacity: 1;
@@ -238,6 +316,20 @@ li {
 .hero__prev-link:hover {
   background-color: transparant;
   color: var(--color-light);
+}
+@media screen and (max-width: 40rem) {
+  .hero__prev-link {
+    display: none;
+  }
+}
+.hero__prev-link svg path {
+  transition: all 0.2s;
+}
+.hero__prev-link:hover {
+  opacity: 1;
+}
+.hero__prev-link:hover svg path {
+  fill: var(--color-accent);
 }
 .hero__pagination {
   display: flex;
@@ -253,6 +345,27 @@ li {
   background-color: var(--color-light);
   opacity: 0.34;
   margin: 0 8rem;
+}
+@media screen and (max-width: 40rem) {
+  .hero__pagination:before {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 30rem) {
+  .hero__pagination .button--next,
+  .hero__pagination .button--prev {
+    max-width: 2rem;
+  }
+}
+.hero__pagination .button--next #Union_1, .hero__pagination .button--next #Union2,
+.hero__pagination .button--prev #Union_1,
+.hero__pagination .button--prev #Union2 {
+  transition: all 0.2s;
+}
+.hero__pagination .button--next:hover #Union_1, .hero__pagination .button--next:hover #Union2,
+.hero__pagination .button--prev:hover #Union_1,
+.hero__pagination .button--prev:hover #Union2 {
+  fill: var(--color-accent);
 }
 .hero__social {
   position: absolute;
@@ -272,25 +385,38 @@ li {
   opacity: 0.34;
   margin: 0 var(--gap-l);
 }
+.hero .counter {
+  white-space: nowrap;
+}
 .hero .counter__total::before {
   content: "/";
 }
 
+.destination {
+  padding-right: var(--gap-m);
+}
 .destination__category {
   font-size: var(--font-size-2);
   margin-bottom: var(--gap-m);
   display: block;
   color: var(--color-light-700);
 }
+@media screen and (max-width: 40rem) {
+  .destination__category {
+    font-size: 1rem;
+  }
+}
 .destination__title {
   font-size: 5.25rem;
+  font-size: clamp(3rem, 8vw, 5.25rem);
   margin: 0;
 }
 .destination__subtitle {
   font-size: var(--font-size-4);
+  font-size: clamp(var(--font-size-2), 5vw, var(--font-size-4));
   font-style: italic;
   font-weight: 300;
-  margin: 0;
+  margin: 0.5 rem 0 0 0;
   color: var(--color-accent);
 }
 .destination__button {
@@ -313,6 +439,18 @@ li {
 .destination__button:hover {
   background-color: transparant;
   color: var(--color-light);
+}
+@media screen and (max-width: 40rem) {
+  .destination__button {
+    font-size: 1rem;
+  }
+}
+.destination__button svg {
+  transition: all 0.2s;
+}
+.destination__button:hover svg {
+  opacity: 1;
+  transform: rotate(90deg);
 }
 
 .social {
